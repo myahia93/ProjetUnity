@@ -27,6 +27,7 @@ public class scriptPlayer : MonoBehaviour
                 Destroy(tir);
                 if (vie < 4) {
                     vie++;
+                    positionApresImpact(vie, posTir);
                 }
             }
         }
@@ -39,6 +40,8 @@ public class scriptPlayer : MonoBehaviour
             vie--;
             if (vie == 0) {
                 Time.timeScale = 0;
+            }else {
+                positionApresImpact(vie, posTir);
             }
         }
     }
@@ -53,6 +56,45 @@ public class scriptPlayer : MonoBehaviour
             }
             trig = true;
             tir = collider.gameObject;
+        }
+    }
+
+    void positionApresImpact(int vie, int direction) {
+        switch (vie)
+        {
+            case 1:
+                if (direction == 1) {
+                    transform.position = new Vector2(5,1.3f);
+                    transform.rotation = Quaternion.Euler(0, 0, -60);
+                }else {
+                    transform.position = new Vector2(-5,1.3f);
+                    transform.rotation = Quaternion.Euler(0, 0, 60);
+                }
+                break;
+            case 2:
+                if (direction == 1) {
+                    transform.position = new Vector2(4,2.0f);
+                    transform.rotation = Quaternion.Euler(0, 0, -45);
+                }else {
+                    transform.position = new Vector2(-4,2.0f);
+                    transform.rotation = Quaternion.Euler(0, 0, 45);
+                }
+                break;
+            case 3:
+                if (direction == 1) {
+                    transform.position = new Vector2(2,2.5f);
+                    transform.rotation = Quaternion.Euler(0, 0, -25);
+                }else {
+                    transform.position = new Vector2(-2,2.5f);
+                    transform.rotation = Quaternion.Euler(0, 0, 25);
+                }
+                break;
+            case 4:
+                transform.position = new Vector2(0,2.4f);
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                break;
+            default:
+                break;
         }
     }
 }
