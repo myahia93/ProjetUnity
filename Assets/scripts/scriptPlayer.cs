@@ -40,8 +40,8 @@ public class scriptPlayer : MonoBehaviour
             Destroy(collider.gameObject);
             vie--;
             if (vie == 0) {
-                //Time.timeScale = 0;
-                GetComponent<Rigidbody2D>().gravityScale = 1;
+                Time.timeScale = 0;
+                //GetComponent<Rigidbody2D>().gravityScale = 1;
             }else {
                 positionApresImpact(vie, posTir);
                 trig = false;
