@@ -22,12 +22,13 @@ public class scriptPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (true) {
+        if (trig) {
             if((Input.GetKeyDown(KeyCode.RightArrow) && posTir == 2) || (Input.GetKeyDown(KeyCode.LeftArrow) && posTir == 1)) {
                 Destroy(tir);
                 if (vie < 4) {
                     vie++;
                     positionApresImpact(vie, posTir);
+                    trig = false;
                 }
             }
         }
@@ -39,9 +40,11 @@ public class scriptPlayer : MonoBehaviour
             Destroy(collider.gameObject);
             vie--;
             if (vie == 0) {
-                Time.timeScale = 0;
+                //Time.timeScale = 0;
+                GetComponent<Rigidbody2D>().gravityScale = 1;
             }else {
                 positionApresImpact(vie, posTir);
+                trig = false;
             }
         }
     }
